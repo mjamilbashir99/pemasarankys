@@ -1,8 +1,11 @@
  <?php
- session_start();
-if($_SESSION['customer_email']  == "")
-header("location:../index.php");
+session_start();
  include("functions/functions.php");
+if($_SESSION['customer_email']  == ""){
+	echo"<script>window.open('../index.php','_self')</script>";
+
+ }
+
 							 ob_start();
 							 $cid = $_SESSION['c_id'];
 							    $p_id = $_GET['p_id'];

@@ -2,8 +2,10 @@
 session_start();
 
 ?>
-<!DOCTYPE>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<head>
 		<title>Pemasaran KYS - Login Form</title>
 <link rel="stylesheet" href="styles/login_style.css" media="all" /> 
@@ -42,6 +44,7 @@ include("../includes/db.php");
 	
 	$check_user = mysqli_num_rows($run_user); 
 	
+	$user_email=$check_user['user_email'];
 	
 	if($check_user==0){
 	echo "<script>alert('Password or Email is wrong, try again!')</script>";

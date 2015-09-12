@@ -36,13 +36,15 @@ else {
 			<a href="index.php?insert_cat">Insert New Category</a>
 			<a href="index.php?view_cats">View All Categories</a>
 			<a href="index.php?view_customers">View Customers</a>
+            			<a href="index.php?delete_customer">Delete Customers </a>
             <a href="index.php?create_customers">Create Customers</a>
 			<a href="index.php?view_orders">View Orders</a>
+            <a href="index.php?view_po">View PO</a>
 			<a href="index.php?view_payments">View Payments</a>
 			<a href="logout.php">Admin Logout</a>
 		
         	<a href="index.php?invitation">Greeting Invitation </a>
-			<a href="index.php?register">new customer  </a>
+
 		
         
 		</div>
@@ -60,15 +62,17 @@ else {
 		
 		if(isset($_GET['insert_product'])){
 		
-		include("insert_product.php"); 
+		include("insert_product.php"); }
+		if(isset($_GET['view_po'])){
 		
+		include("view_po.php"); 
 		}
 		if(isset($_GET['create_customers'])){
 		
 		include("create_customers.php"); 
 		
 		}
-		
+				
 		if(isset($_GET['view_products'])){
 		
 		include("view_products.php"); 
@@ -133,9 +137,9 @@ else {
 		
 		include("invitation.php"); 
 		
-		}if(isset($_GET['register'])){
+		}if(isset($_GET['delete_customer'])){
 		
-		include("newregister.php"); 
+		include("delete_customer.php"); 
 		
 		}
 		?>

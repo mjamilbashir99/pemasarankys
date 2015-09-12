@@ -1,9 +1,11 @@
 <!DOCTYPE>
 <?php 
 session_start();
-if($_SESSION['customer_email']  == "")
-header("location:../index.php");
-include("functions/functions.php");
+ include("functions/functions.php");
+if($_SESSION['customer_email']  == ""){
+	echo"<script>window.open('../index.php','_self')</script>";
+
+ }
 ?>
 <html>
 <head>
@@ -38,7 +40,7 @@ include("functions/functions.php");
 				?>
 <li><b><a href="myprofile.php"><font color="#FFFF00" size="1">My Profile</font></a><font color="#FFFF00" size="1"> | </font><a href="logon_success.php"><font color="#FFFF00" size="1">Main Menu</font></a></b></li>
 <li><a href="logout.php">Logout</a></li>
-<li><a href="my_orders.php?my_orders">My Orders</a></li>
+<!--<li><a href="my_orders.php?my_orders">My Orders</a></li>-->
 <li><a href="all_rfq.php">My RFQ</a></li>
 <li><a href="all_products.php">All Products</a></li>
 <ul>

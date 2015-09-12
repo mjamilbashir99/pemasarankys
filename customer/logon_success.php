@@ -1,12 +1,15 @@
-<!DOCTYPE>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php 
 session_start();
+ include("functions/functions.php");
 if($_SESSION['customer_email']  == "")
-header("location:../index.php");
-include("functions/functions.php");
-
+{
+	echo"<script>window.open('../index.php','_self') script>";
+}
 ?>
-<html>
 	<head>
 		<title>Pemasaran KYS</title>
 		
@@ -26,16 +29,8 @@ include("functions/functions.php");
 			<img id="banner" src="../images/ad_banner.gif" /></div>
 		<p>
 		<!--Header ends here-->
-		
-			
-	
 						</p>
-		
-			
-	
 						<div id="sidebar">
-				
-				
 				<ul id="cats">
 				<?php 
 				$user = $_SESSION['customer_email'];
@@ -57,32 +52,19 @@ include("functions/functions.php");
 | </font><a href="logon_success.php"><font color="#FFFF00" size="1">Main Menu</font></a></b></li>
 <li><a href="logout.php">Logout</a></li>
 <li><a href="received_quotations.php">Received Quotations</a></li>
-
-
-<li><a href="my_orders.php?my_orders">View Order</a></li>
-
+<!--<li><a href="my_orders.php?my_orders">View Order</a></li>-->
 <li><a href="view_favorites.php">View Favorites</a></li>
 <li><a href="all_rfq.php">My RFQ</a></li>
 <li><a href="Tell_friend.php">View Tell A friend</a></li>
-
-
 <li><a href="all_products.php">All Products</a></li>
-
-
-				
-				<ul>
-				
-				</div>
-					
-		
+				</ul>
+			</div>
 			<div id="content_area">
 			
 			<?php cart(); ?>
 			
 			<div id="shopping_cart"> 
-					
-					
-					
+										
 					<table border="0" width="-698" height="0">
 						<tr><span style="float:left; font-size:15px; font-family:arial; padding:5px; line-height:30px;"><?php 
 					if(isset($_SESSION['customer_email'])){
@@ -91,17 +73,11 @@ include("functions/functions.php");
 					}
 					?>
 							<td height="1" width="-698"></td>
-						</tr>
+					</span>	</tr>
 					</table>
 					
-					
-
-					</span>
 			</div>
-			
 				<div id="products_box">
-				
-				
 				
 				<?php 
 				if(!isset($_GET['my_orders'])){
@@ -130,9 +106,7 @@ include("functions/functions.php");
 				
 				
 				?>
-				
 				</div>
-			
 			</div>
 		</div>
 		<!--Content wrapper ends-->
@@ -140,21 +114,13 @@ include("functions/functions.php");
 		
 		
 		<div id="footer">
-		
 		<h2 style="text-align:center; padding-top:30px;">
 		<span style="font-weight: 400"><font size="1" face="Arial">&copy; 2015 by 
 		Pemasarankys</font></span></h2>
-		
 		</div>
-	
-	
-	
-	
-	
 	
 	</div> 
 <!--Main Container ends here-->
-
 
 </body>
 </html>

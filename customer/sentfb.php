@@ -1,9 +1,11 @@
 <!DOCTYPE>
 <?php 
 session_start();
-if($_SESSION['customer_email']  == "")
-header("location:../index.php");
-include("functions/functions.php");
+ include("functions/functions.php");
+if($_SESSION['customer_email']  == ""){
+	echo"<script>window.open('../index.php','_self')</script>";
+
+ }
 
 ?>
 <html>
@@ -98,7 +100,7 @@ include("functions/functions.php");
 						$headers = "MIME-Version: 1.0" . "\r\n"; 
 						$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n"; 
 						// More headers 
-						$headers .= 'From:Pemasaran KYS <info@Pemasaran.KYS.com>' . "\r\n"; 
+						$headers .= 'From:Pemasaran KYS <admin@pemasarankys.my>' . "\r\n"; 
 		 
 						mail($to,$subject,$message,$headers);
 						//$_REQUEST['msg']="Mail Sent";	 

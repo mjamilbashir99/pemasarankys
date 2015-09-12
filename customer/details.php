@@ -1,8 +1,11 @@
 <!DOCTYPE>
 <?php 
 session_start();
-include("functions/functions.php");
+ include("functions/functions.php");
+if($_SESSION['customer_email']  == ""){
+	echo"<script>window.open('../details.php','_self')</script>";
 
+ }
 ?>
 <html>
 	<head>
@@ -59,11 +62,11 @@ include("functions/functions.php");
 <br>
 <div id="sidebar_title">Categories</div>
 				
-				<ul id="cats">
+				
 				
 				<?php getCats(); ?>
 				
-				
+				</ul>
 			
 			
 			</div>
@@ -97,8 +100,9 @@ include("functions/functions.php");
 		$pro_image = $row_pro['product_image'];
 		$pro_desc = $row_pro['product_desc'];
 	 $gallery =$row_pro['gallery'];
-	$img_product= (explode(",",$gallery));
 	
+	$img_product= (explode(",",$gallery));
+	//$gallery_image=$img_product[1];
 
 		echo "
 				<div id='single_product'>
@@ -107,12 +111,14 @@ include("functions/functions.php");
 					
 					<img src='../admin_area/product_images/$pro_image' width='400' height='300' />
 					</br>
-					<img src='../admin_area/product_images/$img_product[0]' width='80' height='100' />
-					<img src='../admin_area/product_images/$img_product[1]' width='80' height='100' />
-					<img src='../admin_area/product_images/$img_product[2]' width='80' height='100' />
-					<img src='../admin_area/product_images/$img_product[3]' width='80' height='100' />
-					<img src='../admin_area/product_images/$img_product[4]' width='80' height='100' />
-					<p>$pro_desc </p>
+					";
+					
+					foreach($img_product as $img_products){
+						
+				echo	"<img src='../admin_area/product_images/$img_products' width='80' height='100'/>&nbsp;";
+					}
+			
+				echo	"<p>$pro_desc </p>
 					
 					<a href='all_products.php' style='float:left;'>Go Back</a>
 					

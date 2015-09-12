@@ -1,9 +1,11 @@
 <!DOCTYPE>
 <?php 
 session_start();
-if($_SESSION['customer_email']  == "")
-header("location:../index.php");
-include("functions/functions.php");
+ include("functions/functions.php");
+if($_SESSION['customer_email']  == ""){
+	echo"<script>window.open('../index.php','_self')</script>";
+
+ }
 
 ?>
 <html>

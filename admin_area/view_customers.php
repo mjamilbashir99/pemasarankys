@@ -12,6 +12,7 @@
 		<th>Email</th>
 		<th>Image</th>
 		<th>Delete</th>
+        <th>Status</th>
 	</tr>
 	<?php 
 	include("includes/db.php");
@@ -28,6 +29,7 @@
 		$c_name = $row_c['customer_name'];
 		$c_email = $row_c['customer_email'];
 		$c_image = $row_c['customer_image'];
+		$staus = $row_c['status'];
 		$i++;
 	
 	?>
@@ -37,7 +39,23 @@
 		<td><?php echo $c_email;?></td>
 		<td><img src="../customer/customer_images/<?php echo $c_image;?>" width="50" height="50"/></td>
 		<td><a href="delete_c.php?delete_c=<?php echo $c_id;?>">Delete</a></td>
-	
+        <td>
+	<form action="cus_update.php?user_id=<?php echo $row_c['customer_id'];?>" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="customer_id" value="<?php echo $row_c['customer_id'];?>" />
+        <select name="status">
+        <?php if($staus==1){ ?>
+        <option value="1" selected="selected">Active</option>
+        <?php }else{?>
+        <option value="1">Active</option>
+         <?php }  if($staus==0){ ?>
+        <option value="0" selected="selected">Deactive</option>
+                <?php } else {?>
+                 <option value="0">Deactive</option>
+               <?php } ?>
+
+        </select>
+        <input name="submit" type="submit" value="Update" />
+        </form></td>
 	</tr>
 	<?php } ?>
 

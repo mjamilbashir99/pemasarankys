@@ -1,11 +1,15 @@
-<!DOCTYPE>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <?php 
 
 include("functions/functions.php");
 
 ?>
-<html>
-	<head>
+
+
 		<title>Pemasaran KYS</title>
 		
 		
@@ -37,7 +41,7 @@ include("functions/functions.php");
 			</ul>
 			
 			<div id="form">
-				<form method="get" action="results.php" enctype="multipart/form-data">
+				<form method="post" action="" enctype="multipart/form-data">
 					<input type="text" name="user_query" placeholder="Search a Product"/ > 
 					<input type="submit" name="search" value="Search" />
 				</form>
@@ -79,11 +83,11 @@ include("functions/functions.php");
 				<div id="products_box">
 	<?php 
 	
-	if(isset($_GET['search'])){
+	if(isset($_POST['search'])){
 	
-	$search_query = $_GET['user_query'];
+	 $search_query = $_POST['user_query'];
 	
-	$get_pro = "select * from products where product_keywords like '%$search_query%'";
+	$get_pro = "select * from products where product_title like '$search_query%'";
 
 	$run_pro = mysqli_query($con, $get_pro); 
 	
@@ -108,12 +112,9 @@ include("functions/functions.php");
 					
 					<a href='login.php'><button style='float:right'>Login</button></a>
 				
-				</div>
-		
-		
-		";
+				</div>";
 	
-	}
+	  }
 	}
 	?>
 				

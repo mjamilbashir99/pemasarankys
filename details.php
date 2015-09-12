@@ -1,6 +1,5 @@
 <!DOCTYPE>
 <?php 
-
 include("functions/functions.php");
 
 ?>
@@ -67,6 +66,7 @@ include("functions/functions.php");
 			
 				<div id="products_box">
 	<?php 
+	
 	if(isset($_GET['pro_id'])){
 	
 	$product_id = $_GET['pro_id'];
@@ -81,23 +81,31 @@ include("functions/functions.php");
 		$pro_title = $row_pro['product_title'];
 		$pro_image = $row_pro['product_image'];
 		$pro_desc = $row_pro['product_desc'];
-	 $gallery =$row_pro['gallery'];
-	$img_product= (explode(",",$gallery));
+	 $gallery_image1 =$row_pro['gallery_image1'];
+	  $gallery_image2 =$row_pro['gallery_image2'];
+	   $gallery_image3 =$row_pro['gallery_image3'];
+	    $gallery_image4 =$row_pro['gallery_image4'];
+		 $gallery_image5 =$row_pro['gallery_image5'];
+
+	
 		echo "
 				<div id='single_product'>
 				
 					<h3>$pro_title</h3>
 					
-					<img src='admin_area/product_images/$pro_image' width='400' height='300' />
+					<img src='../admin_area/product_images/$pro_image' width='400' height='300' />
 					</br>
-					<img src='../admin_area/product_images/$img_product[0]' width='80' height='100' />
-					<img src='../admin_area/product_images/$img_product[1]' width='80' height='100' />
-					<img src='../admin_area/product_images/$img_product[2]' width='80' height='100' />
-					<img src='../admin_area/product_images/$img_product[3]' width='80' height='100' />
-					<img src='../admin_area/product_images/$img_product[4]' width='80' height='100' />
 					
+						
+			<img src='../admin_area/product_images/$gallery_image1' width='80' height='100'/>&nbsp;
+			<img src='../admin_area/product_images/$gallery_image2' width='80' height='100'/>&nbsp;
+			<img src='../admin_area/product_images/$gallery_image3' width='80' height='100'/>&nbsp;
+			<img src='../admin_area/product_images/$gallery_image4' width='80' height='100'/>&nbsp;
+			<img src='../admin_area/product_images/$gallery_image5' width='80' height='100'/>&nbsp;
+				
+			
+			<p>$pro_desc </p>
 					
-					<p>$pro_desc </p>
 					
 					<a href='index.php' style='float:left;'>Go Back</a>
 					

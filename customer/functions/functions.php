@@ -13,6 +13,7 @@ if (mysqli_connect_errno())
   echo "The Connection was not established: " . mysqli_connect_error();
   }
  // getting the user IP address
+  if (!function_exists('getIp')){
   function getIp() {
     $ip = $_SERVER['REMOTE_ADDR'];
  
@@ -24,9 +25,7 @@ if (mysqli_connect_errno())
  
     return $ip;
 }
-  
-  
-  
+  }
 //creating the shopping cart
 function cart(){
 
@@ -58,6 +57,7 @@ if(isset($_GET['add_cart'])){
 	
 }
 
+
 }
  // getting the total added items
  
@@ -81,7 +81,7 @@ if(isset($_GET['add_cart'])){
 		
 		global $con; 
 		
-		$ip = getIp(); 
+		$ip = '';//getIp(); 
 		
 		$get_items = "select * from cart where ip_add='$ip'";
 		
@@ -185,7 +185,9 @@ function getCatPro(){
 	echo "<h2 style='padding:20px;'>No products where found in this category!</h2>";
 	
 	}
-	
+		$i=1; 
+	echo "<table border='1' cellpadding='2'>
+					<tr>";
 	while($row_cat_pro=mysqli_fetch_array($run_cat_pro)){
 	
 		$pro_id = $row_cat_pro['product_id'];
@@ -194,29 +196,31 @@ function getCatPro(){
 		$pro_title = $row_cat_pro['product_title'];
 		$pro_image = $row_cat_pro['product_image'];
 	
-		echo "
-				<div id='single_product'>
-				
-					<h3>$pro_title</h3>
-					
-					<img src='admin_area/product_images/$pro_image' width='180' height='180' />
-					
-			
-					
-					<a href='details.php?pro_id=$pro_id' style='float:left;'>Details</a>
-					
-					<a href='all_products.php?pro_id=$pro_id'><button style='float:right'>Add 2</button></a>
-				
-				</div>
+		echo " <td width='220' height='120' style='padding:10px;'>
+		<h3 style='height:50'>$pro_title</h3>
+		<img src='../admin_area/product_images/$pro_image' width='180' height='180'/>
+		<form action='view_favorites.php?pro_id=$pro_id' method='post'>
+		<input type='submit' value='Add to favorites' name='vfav'>
+		</form>
+		<form action='all_rfq.php?prod_id=$pro_id' method='post'>
+		<input type='submit' value='Add to RFQ' name='cart'>
+		</form>
+		<a href='details.php?pro_id=$pro_id' style='float:left;'>Details |</a>
+		<a href='logon_success.php?pro_id=$pro_id' style='float:left;'>Back |</a>
+		<a href='Tell_friend.php?pro_id=$pro_id' style='float:left;'>Tell To Friend |</a>
 		
-		";
-		
-	
+		</td>";
+			if($i%3==0)
+			 echo"</tr><tr>";
+			$i++;
+		}
 	}
+echo	"</tr></table>";
+}
 	
-}
 
-}
+
+
 
 
 function getBrandPro(){

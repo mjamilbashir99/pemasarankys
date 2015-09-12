@@ -69,8 +69,8 @@ include("frontfunctions.php");
 			<div >
          <table border="0" id="table1" width="505">
          	<tr>
-            <td valign="top" width="15" height="19">
-            &nbsp;</td>
+            <td valign="top" width="15" height="19">&nbsp;
+            </td>
             <td width="483" height="19" colspan="2">
 		<b style="color: #036; font-style: normal; font-variant: normal; font-weight: bold; font-size: 10px; font-family: Arial, sans-serif">
 			<font size="2" color="#FF6600">Pemasarankys</font></b><font size="2" face="Arial"> 
@@ -82,14 +82,14 @@ include("frontfunctions.php");
 
             </tr>
 			<tr>
-            <td valign="top" width="15" height="19">
-            &nbsp;</td>
+            <td valign="top" width="15" height="19">&nbsp;
+            </td>
             <td width="481" height="19" colspan="2">&nbsp;</td>
 
             </tr>
 			<tr>
-            <td valign="top" width="15" height="19">
-            &nbsp;</td>
+            <td valign="top" width="15" height="19">&nbsp;
+            </td>
             <td width="481" height="19" colspan="2">
 			<b style="color: #036; font-style: normal; font-variant: normal; font-weight: bold; font-size: 10px; font-family: Arial, sans-serif">
 			<font size="2" color="#FF6600">Our Mission</font></b></td>
@@ -102,8 +102,8 @@ include("frontfunctions.php");
 			products and services to help enhance our customer's busines</font></td>
          	</tr>
 			<tr>
-            <td valign="top" width="15">
-            &nbsp;</td>
+            <td valign="top" width="15">&nbsp;
+            </td>
             <td width="17">&nbsp;</td>
 
             <td width="464"><font face="Arial" size="2">Providing excellent 
@@ -117,8 +117,8 @@ include("frontfunctions.php");
 			efficient deliveries.</font></td>
          	</tr>
 			<tr>
-            <td valign="top" width="15">
-            &nbsp;</td>
+            <td valign="top" width="15">&nbsp;
+            </td>
             <td width="17">&nbsp;</td>
 
             <td width="464">&nbsp;</td>
@@ -131,8 +131,8 @@ include("frontfunctions.php");
 			<font size="2" color="#FF6600">Our Customers</font></b></td>
          	</tr>
 			<tr>
-            <td valign="top" width="15">
-            &nbsp;</td>
+            <td valign="top" width="15">&nbsp;
+            </td>
             <td width="17">&nbsp;</td>
 
             <td width="464"><font face="Arial" size="2">Sunway Universiti 
@@ -140,28 +140,28 @@ include("frontfunctions.php");
 
             </tr>
 			<tr>
-            <td valign="top" width="15">
-            &nbsp;</td>
+            <td valign="top" width="15">&nbsp;
+            </td>
             <td width="17">&nbsp;</td>
 
             <td width="464"><font face="Arial" size="2">Nillai Collage</font></td>
 
             </tr>
 			<tr>
-            <td valign="top" width="15">
-            &nbsp;</td>
+            <td valign="top" width="15">&nbsp;
+            </td>
             <td width="17">&nbsp;</td>
 
             <td width="464">&nbsp;</td>
 
             </tr>
 			<tr>
-            <td valign="top" width="15">
-            &nbsp;</td>
+            <td valign="top" width="15">&nbsp;
+            </td>
             <td width="17">&nbsp;</td>
 
-            <td width="464">
-			&nbsp;</td>
+            <td width="464">&nbsp;
+			</td>
 
             </tr>
 			<tr>
@@ -170,20 +170,20 @@ include("frontfunctions.php");
             <td width="464">&nbsp;</td>
          	</tr>
 			<tr>
-            <td valign="top" width="15">
-            &nbsp;</td>
+            <td valign="top" width="15">&nbsp;
+            </td>
             <td width="17">&nbsp;</td>
 
             <td width="464">&nbsp;</td>
 
             </tr>
 			<tr>
-            <td valign="top" width="15">
-            &nbsp;</td>
+            <td valign="top" width="15">&nbsp;
+            </td>
             <td width="17">&nbsp;</td>
 
-            <td width="464">
-			&nbsp;</td>
+            <td width="464">&nbsp;
+			</td>
 
             </tr>
 			<tr>
@@ -212,8 +212,8 @@ include("frontfunctions.php");
 		
 		<div id="footer">
 		
-		<h2 style="text-align:center; padding-top:30px;">
-		&nbsp;</h2>
+		<h2 style="text-align:center; padding-top:30px;">&nbsp;
+		</h2>
 		
 		</div>
 	

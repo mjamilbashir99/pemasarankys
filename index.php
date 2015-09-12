@@ -1,6 +1,6 @@
 <!DOCTYPE>
 <?php 
-session_start();
+
 include("frontfunctions.php");
 
 ?>
@@ -37,7 +37,7 @@ include("frontfunctions.php");
 			</ul>
 			
 			<div id="form">
-				<form method="get" action="results.php" enctype="multipart/form-data">
+				<form method="post" action="results.php" enctype="multipart/form-data">
 					<input type="text" name="user_query" placeholder="Search a Product"/ > 
 					<input type="submit" name="search" value="Search" />
 				</form>
@@ -52,19 +52,13 @@ include("frontfunctions.php");
 		
 			<div id="sidebar">
 			
-				
-				
-				<ul id="cats">
-				
 				<div id="sidebar_title">Categories</div>
 				
 				<ul id="cats">
 				
 				<?php getCats(); ?>
 				
-				
-				<ul>
-			
+				</ul>
 			
 			</div>
 		
@@ -72,7 +66,7 @@ include("frontfunctions.php");
 			
 			<?php cart(); ?>
 			
-				<div id="products_box">
+				<div id="products_box" >
 				
 				<?php getPro(); ?>
 				<?php getCatPro(); ?>
@@ -85,7 +79,6 @@ include("frontfunctions.php");
 		<!--Content wrapper ends-->
 		
 		
-		
 		<div id="footer">
 		
 		<h2 style="text-align:center; padding-top:30px;">
@@ -93,10 +86,6 @@ include("frontfunctions.php");
 		Pemasarankys</font></span></h2>
 		
 		</div>
-	
-	
-	
-	
 	
 	
 	</div> 

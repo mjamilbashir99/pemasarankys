@@ -3,7 +3,7 @@
 <?php 
 
 include("includes/db.php");
-
+include("../functions/functions.php");
 ?>
 <html>
 	<head>
@@ -18,17 +18,17 @@ include("includes/db.php");
 <body bgcolor="skyblue">
 
 
-	<form action="insert_product.php" method="post" enctype="multipart/form-data"> 
+	<form action="" method="post" enctype="multipart/form-data"> 
 		
 		
-	<table width="500" bgcolor="#FFFFFF" id="table1"> 
+	<table  align="center" width="795" border="2" bgcolor="#187eae" id="table1"> 
 			
 			<tr align="center">
 				<table align="left" width="750">
 						
 						<tr align="center">
 							<td colspan="6"><h2>
-							<font face="Arial" style="font-size: 11pt">Create an Account</font></h2></td>
+							<font face="Arial" style="font-size: 11pt">Create an Customer</font></h2></td>
 						</tr>
 						
 						<tr>
@@ -54,12 +54,12 @@ include("includes/db.php");
 							<td>
                             
                                 <font face="Arial">
-							<span style="font-size: 11pt">      <input type="radio" value="individual" name="c_check" >individual</span></font>
+							<span style="font-size: 11pt">      <input type="radio" value="1" name="c_check" >individual</span></font>
                             
                        
                             
                             <font face="Arial">
-							<span style="font-size: 11pt"><input type="radio" value="Company" name="c_check" >Company</span>
+							<span style="font-size: 11pt"><input type="radio" value="2" name="c_check" >Company</span>
                             </font>
                             
                             
@@ -192,43 +192,47 @@ include("includes/db.php");
 </body> 
 </html>
 <?php 
-
-	if(isset($_POST['insert_post'])){
+	if(isset($_POST['register'])){
 	
-		//getting the text data from the fields
-		$product_title = $_POST['product_title'];
-		$product_cat= $_POST['product_cat'];
-		$product_brand = $_POST['product_brand'];
-		$product_price = $_POST['product_price'];
-		$product_desc = $_POST['product_desc'];
-		$product_keywords = $_POST['product_keywords'];
-	
-		//getting the image from the field
-		$product_image = $_FILES['product_image']['name'];
-		$product_image_tmp = $_FILES['product_image']['tmp_name'];
 		
-		move_uploaded_file($product_image_tmp,"product_images/$product_image");
+			$c_name=$_POST['c_name'];
+			$c_email=$_POST['c_email'];
+			$c_check=$_POST['c_check'];
+  
+$ip = getIp();
+  
+ $c_pass=$_POST['c_pass'];
+ $comp_name=$_POST['comp_name'];
+ $c_RN=$_POST['c_RN'];
+ $c_image	=	$_FILES['c_image']['name'];	
+ $c_address1=$_POST['c_address1'];
+ $c_address2=$_POST['c_address2'];
+ $c_city=$_POST['c_city'];
+ $c_state=$_POST['c_state'];
+ $c_country=$_POST['c_country'];
+ $c_contactP=$_POST['c_contactP'];
+ $c_contactC1=$_POST['c_contactC1'];
+ $c_contactC2=$_POST['c_contactC2'];
+ $Cus_address=$_POST['Cus_address'];
+		
+		  move_uploaded_file($_FILES['c_image']['tmp_name'],"../customer/customer_images/".$c_image);	
+		 $insert_c = "INSERT INTO  `customers` (customer_ip,`customer_name`,`Ind_OR_Company`,`customer_email`,`customer_pass`,`company_name`,`registration_number`,`address1`,`address2`,`customer_country`,`customer_city`,`State`,`contact_person`,`customer_contact1`,`customer_contact2`,`customer_address`,`customer_image`) 
+VALUES ('$ip','$c_name','$c_check','$c_email','$c_pass','$comp_name','$c_RN','$c_address1','$c_address2','$c_country','$c_city','$c_state',  '$c_contactP','$c_contactC1','$c_contactC2','$Cus_address','$c_image')";
+		$run_c = mysqli_query($con, $insert_c); 
+			if($run_c!=0){
+		echo "<script>alert('Account has been created successfully, Thanks!')</script>";
+		
+		}else{
+			echo "<script>alert('Account Not created successfully!')</script>";
+			
+			}
+		}
 	
-		 $insert_product = "insert into products (product_cat,product_brand,product_title,product_price,product_desc,product_image,product_keywords) values ('$product_cat','$product_brand','$product_title','$product_price','$product_desc','$product_image','$product_keywords')";
-		 
-		 $insert_pro = mysqli_query($con, $insert_product);
-		 
-		 if($insert_pro){
-		 
-		 echo "<script>alert('Product Has been inserted!')</script>";
-		 echo "<script>window.open('index.php?insert_product','_self')</script>";
-		 
-		 }
-	}
 
 
 
+	
 
-
-
-
-
-?>
 
 
 

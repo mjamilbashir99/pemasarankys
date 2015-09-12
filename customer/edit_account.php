@@ -1,4 +1,10 @@
-<?php 	
+<?php 
+session_start();
+ include("functions/functions.php");
+if($_SESSION['customer_email']  == ""){
+	echo"<script>window.open('../index.php','_self')</script>";
+
+ }	
 	include("../includes/db.php"); 
 	//session_start();
 	/*

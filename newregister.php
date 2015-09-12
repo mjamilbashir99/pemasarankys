@@ -9,8 +9,8 @@ include("includes/db.php");
 	<head>
 		<title>Pemasaran KYS</title>
 		
-		
 	<link rel="stylesheet" href="styles/style.css" media="all" /> 
+    
 	</head>
 	
 <body>
@@ -63,13 +63,11 @@ include("includes/db.php");
 				
 				<ul>
 				
-				
 				<li><a href="forgotpass.php">Forget Password</a></li>
 				<li><a href="newregister.php">New Registration</a></li>				
 				<ul>
 				
-				
-				<ul>
+				</ul>
 			
 			
 			</div>
@@ -123,7 +121,7 @@ include("includes/db.php");
 							<td align="right"><font face="Arial" size="2">Customer Email:</font></td>
 							<td>
                             <font face="Arial">
-							<span style="font-size: 11pt"><input type="text" name="c_email" required/></span></font>
+							<span style="font-size: 11pt"><input type="text" name="c_email" id="c_email" required/></span></font>
                             </td>
 						</tr>
 						<tr>
@@ -242,28 +240,14 @@ include("includes/db.php");
 						</tr>
 						
 						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
-						
 					<tr align="center">
-						<td colspan="6"><input type="submit" name="register" value="Create Account" /></td>
+						<td colspan="6"><input type="submit" name="submit" id="submit" value="Create Account" /></td>
 					</tr>
-					
 					
 					
 					</table>
 			</tr>
 			
-		
-		
 		</table> 
 	
 			</div>
@@ -273,21 +257,16 @@ include("includes/db.php");
 	
 	</form>
 	
-	
 					<p>&nbsp;</p>
 					<p>&nbsp;</div>
 			
 				<div id="products_box">
-				
-			
 				
 				</div>
 			
 			</div>
 		</div>
 		<!--Content wrapper ends-->
-		
-		
 		
 		<div id="footer">
 		
@@ -298,11 +277,15 @@ include("includes/db.php");
 	
 	
 	<?php 
-	if(isset($_POST['register'])){
-	
-		
+	if(isset($_POST['submit'])){
+
 			$c_name=$_POST['c_name'];
 			$c_email=$_POST['c_email'];
+				$sql = "SELECT email FROM customers WHERE c_email = $c_email";
+				$select = mysqli_query($con, $sql);
+				$row = mysqli_fetch_assoc($select);
+var_dump($row);
+
 			$c_check=$_POST['c_check'];
   
 $ip = getIp();
@@ -328,11 +311,10 @@ $ip = getIp();
 		  move_uploaded_file($_FILES['c_image']['tmp_name'],"customer/customer_images/".$c_image);	
 		
 		
-		 $insert_c = "INSERT INTO  `customers` (customer_ip,`customer_name` ,  `Ind_OR_Company` ,  `customer_email` ,  `customer_pass` ,  `company_name` ,  `registration_number` ,  `address1` ,  `address2` ,  `customer_country` ,  `customer_city` ,  `State` ,  `contact_person` ,  `customer_contact1` , `customer_contact2` ,  `customer_address` ,  `customer_image` ) 
+		 $insert_c = "INSERT INTO  `customers` (customer_ip,`customer_name` ,  `Ind_OR_Company` ,  `customer_email` ,  `customer_pass` ,  `company_name` ,  `registration_number` ,  `address1` ,  `address2` ,  `customer_country` ,  `customer_city` ,  `State` ,  `contact_person` ,  `customer_contact1` , `customer_contact2` ,  `customer_address` ,  `customer_image`,`status` ) 
 VALUES (
 '$ip',  '$c_name',  '$c_check',  '$c_email',  '$c_pass',  '$comp_name',  '$c_RN',  '$c_address1',  '$c_address2',  '$c_country',  '$c_city',  '$c_state',  '$c_contactP',  
-'$c_contactC1',  '$c_contactC2',  '$Cus_address',  '$c_image'
-)";
+'$c_contactC1',  '$c_contactC2',  '$Cus_address',  '$c_image','0')";
 
 	
 		$run_c = mysqli_query($con, $insert_c); 
@@ -343,7 +325,7 @@ VALUES (
 	
 		$run_cart = mysqli_query($con, $sel_cart); 
 		
-	$check_cart = mysqli_num_rows($run_cart); 
+	   $check_cart = mysqli_num_rows($run_cart); 
 		
 		
 		
@@ -364,12 +346,7 @@ VALUES (
 		
 		echo "<script>window.open('index.php','_self')</script>";
 		
-		
 		}
-	
-
-
-
 	
 	}
 
