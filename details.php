@@ -5,6 +5,22 @@ include("functions/functions.php");
 ?>
 <html>
 	<head>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+ <script>
+ $(document).ready(function(){
+ $('.small_images').click(function(){
+ // $("#image_container").fadeOut();
+  var src = $(this).attr('src');
+  $("#image_container").attr('src',src);
+ $("#image_container").animate(1500 );
+});
+});
+ 
+</script>
+<style>
+.small_images{ cursor:pointer}
+</style>
+
 		<title>Pemasaran KYS</title>
 		
 		
@@ -87,24 +103,36 @@ include("functions/functions.php");
 	    $gallery_image4 =$row_pro['gallery_image4'];
 		 $gallery_image5 =$row_pro['gallery_image5'];
 
-	
-		echo "
+	?>
+		
 				<div id='single_product'>
 				
-					<h3>$pro_title</h3>
-					
-					<img src='../admin_area/product_images/$pro_image' width='400' height='300' />
+					<h3><?php echo $pro_title?></h3>
+					<?php if($pro_image!=''){?>
+					<img src='admin_area/product_images/<?php echo $pro_image?>' width='445' height='300' id='image_container'/>
+                    <?php }?>
+					</br>
 					</br>
 					
-						
-			<img src='../admin_area/product_images/$gallery_image1' width='80' height='100'/>&nbsp;
-			<img src='../admin_area/product_images/$gallery_image2' width='80' height='100'/>&nbsp;
-			<img src='../admin_area/product_images/$gallery_image3' width='80' height='100'/>&nbsp;
-			<img src='../admin_area/product_images/$gallery_image4' width='80' height='100'/>&nbsp;
-			<img src='../admin_area/product_images/$gallery_image5' width='80' height='100'/>&nbsp;
+			<?php if($gallery_image1!=''){?>			
+			<img src='admin_area/product_images/<?php echo $gallery_image1?>' width='80' height='100' class='small_images'/>&nbsp;
+            <?php }?>
+			<?php if($gallery_image2!=''){?>			
+			<img src='admin_area/product_images/<?php echo $gallery_image2?>' width='80' height='100' class='small_images'/>&nbsp;
+            <?php }?>
+            <?php if($gallery_image3!=''){?>			
+			<img src='admin_area/product_images/<?php echo $gallery_image3?>' width='80' height='100' class='small_images'/>&nbsp;
+            <?php }?>
+            <?php if($gallery_image4!=''){?>			
+			<img src='admin_area/product_images/<?php echo $gallery_image4?>' width='80' height='100' class='small_images'/>&nbsp;
+            <?php }?>
+            <?php if($gallery_image5!=''){?>			
+			<img src='admin_area/product_images/<?php echo $gallery_image5?>' width='80' height='100' class='small_images'/>&nbsp;
+            <?php }?>
+           
 				
 			
-			<p>$pro_desc </p>
+		<p><?php $pro_desc ?></p>
 					
 					
 					<a href='index.php' style='float:left;'>Go Back</a>
@@ -114,9 +142,9 @@ include("functions/functions.php");
 				</div>
 		
 		
-		";
+		
 	
-	}
+<?php	}
 	}
 ?>
 				
