@@ -5,7 +5,10 @@
 	<tr align="center">
 		<td colspan="6"><h2>View All Customers Here</h2></td>
 	</tr>
-	
+	 <form method="post" enctype="multipart/form-data">
+<input  name="search" type="text" placeholder="search by name"/>
+<input name="btn" type="submit" value="Search" />
+	</form> 
 	<tr align="center" bgcolor="skyblue">
 		<th>S.N</th>
 		<th>Name</th>
@@ -16,8 +19,13 @@
 	</tr>
 	<?php 
 	include("includes/db.php");
-	
-	$get_c = "select * from customers";
+	if(isset($_POST['btn'])){
+		$search=$_POST['search'];
+	    $get_c = "select * from customers where customer_name='$search'";
+	}else{
+		
+		    $get_c = "select * from customers";
+		}
 	
 	$run_c = mysqli_query($con, $get_c); 
 	

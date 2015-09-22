@@ -10,22 +10,25 @@ include("includes/db.php");
 	if(isset($_POST['login'])){
 		$c_email = $_POST['email'];
 		$c_pass = $_POST['pass'];
-	    $sel_c = "select * from customers where customer_pass='$c_pass' AND customer_email='$c_email'";
+	    $sel_c = "select * from customers where customer_pass='$c_pass' and customer_email='$c_email' and status = 1";
 		$run_c = mysqli_query($con, $sel_c);
-		$check_customer = mysqli_num_rows($run_c); 
+		$check_customer = mysqli_num_rows($run_c);
+		if($check_customer<=0)
+		{
+			$msg="your account is deactive";
+			header("Location: login.php?msg=$msg");
+		
+          
+		} else{
 		$result = mysqli_fetch_assoc($run_c);
 		$c_id =  $result['customer_id'];
 		$c_email =  $result['customer_email'];
-		if($result['status']==0)
-		{
-			echo "<script>alert('Password , email is incorrect Or your acount Disable, plz try again!')</script>";
-			  header("location: login.php");
-		}
+		
 		  $_SESSION['customer_email']  = $c_email;
 		  $_SESSION['c_id']            = $c_id;
 		  header("location: customer/logon_success.php");
 	}
-	
+	}
 	?>
 <head>
 <title>Pemasaran KYS</title>
@@ -66,6 +69,7 @@ include("includes/db.php");
 </ul>
 </div>
 <!--Content wrapper ends-->
+<?php echo $_GET['msg']; ?>
 <div id="content_area">
 <form method="post" action="">
     <div align="center">

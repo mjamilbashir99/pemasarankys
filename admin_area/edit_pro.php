@@ -24,6 +24,11 @@ if(isset($_GET['edit_pro'])){
 		$pro_keywords = $row_pro['product_keywords']; 
 		$pro_cat = $row_pro['product_cat'];
 		$pro_brand = $row_pro['product_brand'];
+		$pro_gallery1 = $row_pro['gallery_image1'];
+		$pro_gallery2 = $row_pro['gallery_image2'];
+		$pro_gallery3 = $row_pro['gallery_image3'];
+		$pro_gallery4 = $row_pro['gallery_image4'];
+		$pro_gallery5 = $row_pro['gallery_image5'];
 		
 		$get_cat = "select * from categories where cat_id='$pro_cat'";
 		
@@ -126,11 +131,27 @@ if(isset($_GET['edit_pro'])){
 				<td align="right"><b>Product Image:</b></td>
 				<td><input type="file" name="product_image" /><img src="product_images/<?php echo $pro_image; ?>" width="60" height="60"/></td>
 			</tr>
-			
 			<tr>
-				<td align="right"><b>Product Price:</b></td>
-				<td><input type="text" name="product_price" value="<?php echo $pro_price;?>"/></td>
+				<td align="right"><b>Gallery Image 1:</b></td>
+				<td><input type="file" name="gallery_image1" /><img src="product_images/<?php echo $pro_gallery1; ?>" width="60" height="60"/></td>
 			</tr>
+            <tr>
+				<td align="right"><b>Gallery Image 2:</b></td>
+				<td><input type="file" name="gallery_image2" /><img src="product_images/<?php echo $pro_gallery2; ?>" width="60" height="60"/></td>
+			</tr>
+            <tr>
+				<td align="right"><b>Gallery Image 3:</b></td>
+				<td><input type="file" name="gallery_image3" /><img src="product_images/<?php echo $pro_gallery3; ?>" width="60" height="60"/></td>
+			</tr>
+            <tr>
+				<td align="right"><b>Gallery Image 4:</b></td>
+				<td><input type="file" name="gallery_image4" /><img src="product_images/<?php echo $pro_gallery4; ?>" width="60" height="60"/></td>
+			</tr>
+            <tr>
+				<td align="right"><b>Gallery Image 5:</b></td>
+				<td><input type="file" name="gallery_image5" /><img src="product_images/<?php echo $pro_gallery5; ?>" width="60" height="60"/></td>
+			</tr>
+			
 			
 			<tr>
 				<td align="right"><b>Product Description:</b></td>
@@ -168,6 +189,30 @@ if(isset($_GET['edit_pro'])){
 		$product_price = $_POST['product_price'];
 		$product_desc = $_POST['product_desc'];
 		$product_keywords = $_POST['product_keywords'];
+		 $gallery_image1 = $_FILES['gallery_image1']['name'];
+		$gallery_image1_tmp = $_FILES['gallery_image1']['tmp_name'];
+		
+		move_uploaded_file($gallery_image1_tmp,"product_images/$gallery_image1");
+		
+		$gallery_image2 = $_FILES['gallery_image2']['name'];
+		$gallery_image2_tmp = $_FILES['gallery_image2']['tmp_name'];
+		
+		move_uploaded_file($gallery_image2_tmp,"product_images/$gallery_image2");
+		
+		$gallery_image3 = $_FILES['gallery_image3']['name'];
+		$gallery_image3_tmp = $_FILES['gallery_image3']['tmp_name'];
+		
+		move_uploaded_file($gallery_image3_tmp,"product_images/$gallery_image3");
+		
+		$gallery_image4 = $_FILES['gallery_image4']['name'];
+		$gallery_image4_tmp = $_FILES['gallery_image4']['tmp_name'];
+		
+		move_uploaded_file($gallery_image4_tmp,"product_images/$gallery_image4");
+		
+		$gallery_image5= $_FILES['gallery_image5']['name'];
+		$gallery_image5_tmp = $_FILES['gallery_image5']['tmp_name'];
+		
+		move_uploaded_file($gallery_image5_tmp,"product_images/$gallery_image5");
 	
 		//getting the image from the field
 		$product_image = $_FILES['product_image']['name'];
@@ -175,7 +220,7 @@ if(isset($_GET['edit_pro'])){
 		
 		move_uploaded_file($product_image_tmp,"product_images/$product_image");
 	
-		 $update_product = "update products set product_cat='$product_cat',product_brand='$product_brand',product_title='$product_title',product_price='$product_price',product_desc='$product_desc',product_image='$product_image', product_keywords='$product_keywords' where product_id='$update_id'";
+		 $update_product = "update products set product_cat='$product_cat',product_brand='$product_brand',product_title='$product_title',product_price='$product_price',product_desc='$product_desc',product_image='$product_image', product_keywords='$product_keywords',gallery_image1='$gallery_image1',gallery_image2='$gallery_image2',gallery_image3='$gallery_image3',gallery_image4='$gallery_image4',gallery_image5='$gallery_image5' where product_id='$update_id'";
 		 
 		 $run_product = mysqli_query($con, $update_product);
 		 

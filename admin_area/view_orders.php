@@ -4,7 +4,10 @@
 	<tr align="center">
 		<td colspan="6"><h2>View all orders here</h2></td>
 	</tr>
-	
+	 <form method="post" enctype="multipart/form-data">
+<input  name="search" type="text" placeholder="search by User name"/>
+<input name="btn" type="submit" value="Search" />
+	</form> 
 	<tr align="center" bgcolor="skyblue">
 		<th>S.N</th>
 		<th>Product (S)</th>
@@ -16,8 +19,14 @@
 	</tr>
 	<?php 
 	include("includes/db.php");
-	
-	$get_order = "select * from orders";
+	if(isset($_POST['btn'])){
+		
+		$search=$_POST['search'];
+	$get_order = "select * from orders where = '$search'";
+	}else{
+		$get_order = "select * from orders";
+		
+		}
 	
 	$run_order = mysqli_query($con, $get_order); 
 	

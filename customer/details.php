@@ -77,7 +77,13 @@ if($_SESSION['customer_email']  == ""){
 					
 					<span style="float:right; font-size:18px; padding:5px; line-height:40px;">
 					
-						
+						  <span style=" text-align:center; font-size:15px; font-family:arial; padding:5px; line-height:30px;">
+						<?php 
+					if(isset($_SESSION['customer_email'])){
+					echo "<b>Welcome1:</b>" . $_SESSION['customer_email'] ;  echo "| View Detail product";
+					
+					}
+					?>
 					
 					
 					</span>
@@ -99,11 +105,12 @@ if($_SESSION['customer_email']  == ""){
 		$pro_title = $row_pro['product_title'];
 		$pro_image = $row_pro['product_image'];
 		$pro_desc = $row_pro['product_desc'];
-	 $gallery =$row_pro['gallery'];
+		$gallery1 =$row_pro['gallery_image1'];
+		$gallery2 =$row_pro['gallery_image2'];
+		$gallery3 =$row_pro['gallery_image3'];
+		$gallery4 =$row_pro['gallery_image4'];
+		$gallery5 =$row_pro['gallery_image5'];
 	
-	$img_product= (explode(",",$gallery));
-	//$gallery_image=$img_product[1];
-
 		echo "
 				<div id='single_product'>
 				
@@ -111,23 +118,17 @@ if($_SESSION['customer_email']  == ""){
 					
 					<img src='../admin_area/product_images/$pro_image' width='400' height='300' />
 					</br>
-					";
-					
-					foreach($img_product as $img_products){
-						
-				echo	"<img src='../admin_area/product_images/$img_products' width='80' height='100'/>&nbsp;";
-					}
-			
-				echo	"<p>$pro_desc </p>
-					
+				<img src='../admin_area/product_images/$gallery1' width='80' height='100'/>&nbsp;
+				<img src='../admin_area/product_images/$gallery2' width='80' height='100'/>&nbsp;
+				<img src='../admin_area/product_images/$gallery3' width='80' height='100'/>&nbsp;
+				<img src='../admin_area/product_images/$gallery4' width='80' height='100'/>&nbsp;
+				<img src='../admin_area/product_images/$gallery5' width='80' height='100'/>&nbsp;
+		    	<p>$pro_desc </p>
 					<a href='all_products.php' style='float:left;'>Go Back</a>
 					
 					<a href='all_rfq.php?prod_id=$pro_id'><button style='float:right'>Add to RFQ</button></a>
-				
 				</div>
-		
-		
-		";
+				";
 	
 	}
 	}

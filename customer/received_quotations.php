@@ -69,9 +69,9 @@ if($_SESSION['customer_email']  == ""){
   </div>
   
 
-  <div id="products_box">
-    <table width="600" align="left"  bgcolor="pink" >
-      <tr align="center" bgcolor="skyblue">
+  <div id="products_box" style="vertical-align:none; font-size:16px;">
+    <table width="790"  align="left"  bgcolor="pink" >
+      <tr align="center" height="25" bgcolor="skyblue">
         <td>No</td>
         <td>Product</td>
         <td>Quantity</td>

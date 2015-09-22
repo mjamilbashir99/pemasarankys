@@ -99,7 +99,7 @@ if($_SESSION['customer_email']  == ""){
                     <th>Cart id </th>
                     	<th>Customer id </th>
                         <th>Product</th>
-                      
+                        <th>Image</th>
                          <th>Quantity</th>
                          
                         <th>Action</th>
@@ -131,14 +131,17 @@ if($_SESSION['customer_email']  == ""){
                                <td>
 							   		<?php 
 							   			 $product_id = $row_data['p_id'];
-								$sel_p = "select product_id,product_title,product_price from products where product_id='".$product_id."'";
+								$sel_p = "select product_id,product_title,product_price,product_image from products where product_id='".$product_id."'";
 										$run_p = mysqli_query($con, $sel_p);
 										$product = mysqli_fetch_assoc($run_p);
+										$pro_image= $product['product_image'];
 										echo $product['product_title'];
 									?>
                                </td>
                                 <td>
-                              
+                                <img src='../admin_area/product_images/<?php echo $pro_image ?>' width='80' height='60'/>
+                                </td>
+                                <td>
                                 <form method="post" action="rfq_update.php?cartid=<?php echo $row_data['cart_id']; ?>" enctype="multipart/form-data">
                                 <input name="cartid" type="hidden" value="<?php echo $row_data['cart_id']; ?>">
 								<input name="qty" value="<?php echo $row_data['qty']; ?>"   type="number" min=1>

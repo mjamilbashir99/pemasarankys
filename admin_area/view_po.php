@@ -1,9 +1,11 @@
 <div align="center" style="background-color: pink">
- <table width="760" bgcolor="pink" > 
-<h4>View PO </h4>
-	
+ <table width="760" bgcolor="pink" >
+ <h4>View PO </h4>
+ <form method="post" enctype="multipart/form-data">
+<input  name="search" type="text" placeholder="search by User name"/>
+<input name="btn" type="submit" value="Search" />
+	</form> 
 
-	
 	<tr align="center" bgcolor="skyblue">
 		<th>Sr.</th>
         <th>Order Id</th>
@@ -13,13 +15,20 @@
 	</tr>
 	<?php 
 	include("includes/db.php");
-	
+		if(isset($_POST['btn'])){
+		$search=$_POST['search'];
+		$get_pro = "SELECT c.*,o.*
+		FROM orders as o
+		JOIN customers as c
+		on o.c_id=c.customer_id
+		where o.status_order='issue_po' and customer_name = '$search'";
+		}else{
 		$get_pro = "SELECT c.*,o.*
 		FROM orders as o
 		JOIN customers as c
 		on o.c_id=c.customer_id
 		where o.status_order='issue_po'";
-	
+		}
 	$run_pro = mysqli_query($con, $get_pro); 
 	$i = 0;
 	while ($row_pro=mysqli_fetch_array($run_pro)){

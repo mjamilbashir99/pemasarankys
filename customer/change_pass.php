@@ -1,6 +1,6 @@
 <?php 
 session_start();
- include("functions/functions.php");
+ include_once("functions/functions.php");
 if($_SESSION['customer_email']  == ""){
 	echo"<script>window.open('../index.php','_self')</script>";
 

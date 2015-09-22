@@ -70,10 +70,8 @@ if($_SESSION['customer_email']  == ""){
 				
 				
 				{
-					//echo 'eqweqe'; 
-					
-					    $name=$_POST['name'];
-						$email=$_POST['email'];	
+				$name=$_POST['name'];
+				$email=$_POST['email'];	
 				if($name != '' || $email != ''){
 					$pro_id=$_GET['pro_id'];
 					$user=$_SESSION['customer_email']; 
@@ -100,8 +98,35 @@ if($_SESSION['customer_email']  == ""){
 						 
 										$m = mail($to,$subject,$message,$headers);
 										//$_REQUEST['msg']="Mail Sent";	 
+										//sender mail
+										$to=$_SESSION['customer_email']; 
+								$subject = "Pemasaran KYS Your sending request to show this product";
+								$message = "
+						
+										<html> 
+										<body> 
+												
+												<p>Your Friend Name:  $name</p>
+												<p>Your Email id:   $email    </p>
+												<p>http://www.pemasarankys.my/all_product.php?pro_id=$pro_id</p> 
+											    <p>Pemasaran KYS Team</p> 
+										</body> 
+										</html> 
+										"; 
+										// Always set content-type when sending HTML email
+						
+										$headers = "MIME-Version: 1.0" . "\r\n"; 
+										$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n"; 
+										// More headers 
+										$headers .= 'From:Pemasaran KYS <info@Pemasaran.KYS.com>' . "\r\n"; 
+						 
+										$m = mail($to,$subject,$message,$headers);
+										$rs = "delete * from tell_friend where product_id = '$pro_id'";
+		                                mysqli_query($con, $rs); 
+										
 						if($m){
 							echo "<script>alert('You mail sent successfully, Thanks!')</script>";
+						 
 						}else{
 							echo "<script>alert('You mail Notsent successfully, Thanks!')</script>";
 						}
@@ -121,9 +146,17 @@ if($_SESSION['customer_email']  == ""){
       </tr>
       <?php 
 	include("includes/db.php");
+	if(isset($_POST['tell'])){
 	$pro_id=$_GET['pro_id'];
-	$get_pro = "select * from products where product_id = $pro_id";
 	
+	$res = "insert into tell_friend  (user_id,product_id,status) value ('$cid','$pro_id','0')";
+		$run_pro = mysqli_query($con, $res); 
+	
+     	$get_pro = "SELECT t.*,p.*
+		FROM tell_friend as t
+		JOIN products as p
+		on t.product_id=p.product_id
+		where user_id='$cid'";
 	$run_pro = mysqli_query($con, $get_pro); 
 	
 	$i = 0;
@@ -151,7 +184,7 @@ if($_SESSION['customer_email']  == ""){
         </form>
       </tr>
       
-      <?php } ?>
+      <?php } }?>
     </table>
   </div>
 </div>

@@ -1,6 +1,6 @@
 <?php 
-session_start();
- include("functions/functions.php");
+
+ include_once("functions/functions.php");
 if($_SESSION['customer_email']  == ""){
 	echo"<script>window.open('../index.php','_self')</script>";
 
@@ -18,7 +18,7 @@ FROM  `customers`
 	$get_customer = "select * from customers where customer_email='$user'";
 	$run_customer = mysqli_query($con, $get_customer); 
 	$row_customer = mysqli_fetch_array($run_customer); 
-//var_dump($row_customer);
+
 	$c_id = $row_customer['customer_id'];
 	$name = $row_customer['customer_name'];
 	 $radiovalue=$row_customer['Ind_OR_Company'];

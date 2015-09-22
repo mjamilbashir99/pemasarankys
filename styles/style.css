@@ -139,15 +139,33 @@ margin-bottom:10px;
 	#single_product img {border:1px solid black;}
 /* shopping cart bg color - welcome guest total item, login and etc */
 	#shopping_cart {width:800px; height:38px; background:orange; color:white;}
-
+ul.pagination {
+    text-align:center;
+    color:#FFA500;
+	width:660px;
+}
+ul.pagination li {
+    display:inline;
+    padding:0 3px;
+}
+ul.pagination a {
+    color:#FFA500;
+    display:inline-block;
+    padding:5px 10px;
+    border:1px solid #cde0dc;
+    text-decoration:none;
+}
+ul.pagination a:hover, 
+ul.pagination a.current {
+    background:#FFA500;
+    color:#fff; 
+}
 
 #footer {
 width:1000px;
 height:100px;
 background:white;
 clear:both;
-
-
 }
 
 

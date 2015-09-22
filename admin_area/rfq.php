@@ -1,7 +1,12 @@
+<?php 
+	include("includes/db.php");?>
 <div align="center" style="background-color: pink">
  <table width="760" bgcolor="pink" > 
-
-	
+ <form method="post" enctype="multipart/form-data">
+<input name="search" type="text" placeholder="search by user name" />
+<input name="btn" type="submit" value="Search" />
+	</form>
+    
 <h4>View RFQ</h4>
 	
 	<tr align="center" bgcolor="skyblue">
@@ -12,14 +17,22 @@
 		<th>Action</th>
 	</tr>
 	<?php 
-	include("includes/db.php");
-	
+	if(isset($_POST['btn'])){
+		
+		$search=$_POST['search'];
+		$get_pro = "SELECT c.*,o.*
+		FROM orders as o
+		JOIN customers as c
+		on o.c_id=c.customer_id
+		where o.status_order='submit_rfq' and customer_name = '$search'";
+	}
+	else{
 		$get_pro = "SELECT c.*,o.*
 		FROM orders as o
 		JOIN customers as c
 		on o.c_id=c.customer_id
 		where o.status_order='submit_rfq'";
-	
+		}
 	$run_pro = mysqli_query($con, $get_pro); 
 	$i = 0;
 	while ($row_pro=mysqli_fetch_array($run_pro)){

@@ -78,7 +78,7 @@ if($_SESSION['customer_email']  == ""){
 		 $q="INSERT INTO feedback (c_id, fname, companyid, Email_address, telephone_number, subject, feedback) 
 		 VALUES ('".$cid."', '".$fname."','".$C_ID."','".$E_address."','".$phoneNumber."','".$subject."','".$fb."')";
 		 if(mysqli_query($con, $q)){
-			$to=$_SESSION['customer_email'];
+			$to="admin@pemasarankys.my";
 				$subject = "Pemasaran KYS Your Password";
 				$message = "
 		
@@ -116,7 +116,7 @@ if($_SESSION['customer_email']  == ""){
 ?>
   <div id="products_box">
     <form method="POST" action="sentfb.php">
-      <h2 style='padding:20px;'>Welcome: </h2>
+    
       <table border="2" style="padding:4%">
         <tr>
           <td> Name: </td>

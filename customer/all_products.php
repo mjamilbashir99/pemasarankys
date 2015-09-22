@@ -25,16 +25,10 @@ if($_SESSION['customer_email']  == ""){
 		
 			<a href="../index.php"><img id="logo" src="../images/logo.gif" /> </a>
 			<img id="banner" src="../images/ad_banner.gif" /></div>
-		<p>
-		<!--Header ends here-->
+		<div class="content_wrapper">
 		
 			
-	
-						</p>
-		
-			
-	
-						<div id="sidebar">
+				   <div id="sidebar">
 				
 				
 				<ul id="cats">
@@ -64,71 +58,49 @@ if($_SESSION['customer_email']  == ""){
 <br>
 
 <div id="sidebar_title">Categories</div>
-<ul id="cats">
-				
-				<?php getCats(); ?>
-				</ul>
-				
-					</ul>
-				
-				</div>
-					
-		
-			<div id="content_area">
-			
-			<?php// cart(); ?>
+ <ul id="cats">
+				             <?php getCats(); ?>
+					 </ul>
+</ul>
+</div>
+                   <div id="content_area" style="float:left">
 			
 			<div id="shopping_cart"> 
 					
-					
-					
-					<table border="0" width="-698" height="0">
-						<tr>
-                        <span style="float:left; font-size:15px; font-family:arial; padding:5px; line-height:30px;">
-						<?php 
-					if(isset($_SESSION['customer_email'])){
-					echo "<b>Welcome1:</b>" . $_SESSION['customer_email'] ;  echo "| View All Products";
-					
-					}
-					?>
-							<td height="1" width="-698"></td>
-                            </span>
-						</tr>
+					<table border="0" width="100%" height="0">
+                            <tr>
+                            <span style="float:left; font-size:15px; font-family:arial; padding:5px; line-height:30px;">
+                            <?php 
+                        if(isset($_SESSION['customer_email'])){
+                        echo "<b>Welcome1:</b>" . $_SESSION['customer_email'] ;  echo "| View All Products";
+                        
+                        }
+                        ?>
+                                <td height="1" width="-698"></td>
+                                </span>
+                            </tr>
 					</table>
-					
-					
-
-					
-			</div>
-			
-			
+				
+		    </div>
+            <div style="clear:both"></div>
 			
 				<div id="products_box">
 				
 				<?php getPro(); ?>
 				<?php getCatPro(); ?>
 
-			
-				
-				</div>
-			
-
-			
-				<div id="products_box">
-				
-				
-				
-				
-				
-								
 				</div>
 			
 			</div>
-		</div>
+				
+				</div>
+					
+		
+	
+			
+	</div>
 		<!--Content wrapper ends-->
-		
-		
-		
+	
 		<div id="footer">
 		
 		<h2 style="text-align:center; padding-top:30px;">
@@ -136,12 +108,7 @@ if($_SESSION['customer_email']  == ""){
 		Pemasarankys</font></span></h2>
 		
 		</div>
-	
-	
-	
-	
-	
-	
+
 	</div> 
 <!--Main Container ends here-->
 

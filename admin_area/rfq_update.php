@@ -52,7 +52,9 @@
 	<tr align="center" bgcolor="skyblue">
 		<th>Sr.</th>
         <th>Product title</th>
+        <th>Image</th>
 		<th>Quantity</th>
+        <th>Unit Price</th>
 		<th>Price</th>
 		
 	</tr>
@@ -70,8 +72,10 @@ include("includes/db.php");
 							  $i = 0;
 							  while ($row_pro=mysqli_fetch_array($res)){
 								$product_title = $row_pro['product_title'];
+								$pro_image = $row_pro['product_image'];
 								$qty = $row_pro['qty'];
 								$p_price = $row_pro['p_price'];
+								$u_price = $row_pro['unit_price'];
 								$ods_id = $row_pro['ods_id'];
 								$order_no = $row_pro['order_no'];
 							  	$i++;
@@ -85,11 +89,17 @@ include("includes/db.php");
             <td>
                <?php echo  $product_title;?>
             </td>
+             <td>
+                 <img src='../admin_area/product_images/<?php echo $pro_image ?>' width='50' height='35'/>
+            </td>
            <td>
                 <?php echo $qty;?>
             </td>
     <td> 
    <input name="p_price[]" type="text" value="<?php echo $p_price ?>"> 
+    </td>
+     <td> 
+   <input name="u_price[]" type="text" value="<?php echo $u_price ?>"> 
     </td>
 	</tr>
       

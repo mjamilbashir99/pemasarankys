@@ -7,17 +7,14 @@ else {
 
 ?>
 
-<?
 
-if(isset())
-
-INSERT INTO `favorites`(`id`, `user_id`, `Product_id`, `view`, `Date`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5])
-
-
-?>
 <table width="795" align="center" bgcolor="pink"> 
-
-	
+	<tr align="center">
+    <form method="post" enctype="multipart/form-data">
+<input  name="search" type="text" placeholder="search by Product name"/>
+<input name="btn" type="submit" value="Search" />
+	</form>
+    </tr>
 	<tr align="center">
 		<td colspan="6"><h2>View All Products Here</h2></td>
 	</tr>
@@ -32,9 +29,15 @@ INSERT INTO `favorites`(`id`, `user_id`, `Product_id`, `view`, `Date`) VALUES ([
 	</tr>
 	<?php 
 	include("includes/db.php");
+	if(isset($_POST['btn'])){
+		
+		$search=$_POST['search'];
+	$get_pro = "select * from products where product_title= '$search'";
 	
-	$get_pro = "select * from products";
-	
+	}else{
+		$get_pro = "select * from products";
+		
+	}
 	$run_pro = mysqli_query($con, $get_pro); 
 	
 	$i = 0;
@@ -51,7 +54,7 @@ INSERT INTO `favorites`(`id`, `user_id`, `Product_id`, `view`, `Date`) VALUES ([
 	<tr align="center">
 		<td><?php echo $i;?></td>
 		<td><?php echo $pro_title;?></td>
-		<td><img src="product_images/<?php echo $pro_image;?>" width="60" height="60"/></td>
+		<td><img src="product_images/<?php echo $pro_image;?>" width="45" height="45"/></td>
 		<td><?php echo $pro_price;?></td>
 		<td>
         <a href="index.php?edit_pro=<?php echo $pro_id; ?>">Edit</a>
@@ -63,7 +66,7 @@ INSERT INTO `favorites`(`id`, `user_id`, `Product_id`, `view`, `Date`) VALUES ([
         </td>
 	
 	</tr>
-	<?php } ?>
+	<?php  }?>
 </table>
 
 <?php } ?>

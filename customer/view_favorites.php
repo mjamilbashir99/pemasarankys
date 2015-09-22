@@ -73,15 +73,19 @@ if($_SESSION['customer_email']  == ""){
 		if(isset($_POST['vfav'])){
 		    $pro_id	=	$_GET['pro_id'];
 			$date=	date("Y-m-d");
+			$fav = "select user_id,Product_id from favorites where Product_id=$pro_id and user_id ='".$cid."'";
+			$fav_res = mysqli_query($con, $fav);
+			if(mysqli_num_rows($fav_res)==0){
 			 $q="INSERT INTO `favorites`(`user_id`,`Product_id`,`fav_date`)
 					VALUES ('$cid',$pro_id,$date)";
 			if( mysqli_query($con, $q)!=0)
 			{
 				echo "Add favorite product";
 			}
+			}
 			else
 			{
-				echo "favorite product is not selected";
+				echo "favorite product is Already selected";
 			}
 		}
 	?>
@@ -89,7 +93,7 @@ if($_SESSION['customer_email']  == ""){
       <tr align="center" bgcolor="skyblue">
         <th>No</th>
         <th>Product</th>
-       
+       <th>Image</th>
         <th>Edit</th>
       </tr>
       <?php 
@@ -98,9 +102,9 @@ if($_SESSION['customer_email']  == ""){
 			//echo "select user_id,Product_id,view,Date from favorites where user_id ='".$cid."'"; exit;
 			$sel_fav = "select user_id,Product_id,view,fav_date from favorites where user_id ='".$cid."'";
 			$run_fav = mysqli_query($con, $sel_fav);
+			//if(mysqli_num_rows($run_fav)>=1){
 			$i = 1;
 			while($row_data = mysqli_fetch_array($run_fav))
-		
 			{
 		
 	  ?>
@@ -109,14 +113,16 @@ if($_SESSION['customer_email']  == ""){
                 <td>
                 	<?php 
 						$product_id = $row_data['Product_id'];
-						$sel_p = "select product_title from products where product_id='".$product_id."'";
+						$sel_p = "select product_title,product_image from products where product_id='".$product_id."'";
 						$run_p = mysqli_query($con, $sel_p);
 						$product = mysqli_fetch_assoc($run_p);
 						echo $product['product_title'];
 						
 					?>
                 </td>
-                
+                <td> 
+                 <img src='../admin_area/product_images/<?php echo  $product['product_image']; ?>' width='50' height='35'/>
+            </td>
                 <td>
                 <form action="fav_delt.php?p_id=<?php echo $product_id ?>" method="post">
 <input name="cartid" type="hidden" value="<?php echo $row_data['Product_id']; ?>">
@@ -128,7 +134,10 @@ if($_SESSION['customer_email']  == ""){
               </tr>
       <?php 
 	  $i++; 
-	  } ?>
+	  } 
+	  
+		//	}
+			?>
     </table>
   </div>
 </div>

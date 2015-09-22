@@ -10,6 +10,8 @@ include("includes/db.php");
 		<title>Pemasaran KYS</title>
 		
 	<link rel="stylesheet" href="styles/style.css" media="all" /> 
+    <script src="http://code.jquery.com/jquery-latest.min.js"
+        type="text/javascript"></script>
     
 	</head>
 	
@@ -84,15 +86,35 @@ include("includes/db.php");
 			</div>
 		</div>
 		<!--Content wrapper ends-->
+		 <script>
 		
-				
-			
-				
-					
-				
-				
+		$( document ).ready(function() {
+              $("#email").blur(function(){
+ 				  $("#submit").removeAttr('disabled');
+				   email= $('#email').val();
+				   if(email!='')
+				   {
+					$.post( "emailexists.php", { email:email}, function( data ) {
+					if(data.status==1)
+					{
+						alert("This email id alreay exits");
+					   $('#email').val('');
+					   $('#email').focus();
+						$("#submit").attr('disabled','disabled');
+					}
+					else
+					{
+						$("#submit").removeAttr('disabled');
+					}
+					}, "json");
+				   }
+			  
+			  });                		
 
+		});
+    </script>
 					
+
 					<td colspan="3"> 
 	
 	<form method="post" action=""> 
@@ -121,7 +143,7 @@ include("includes/db.php");
 							<td align="right"><font face="Arial" size="2">Customer Email:</font></td>
 							<td>
                             <font face="Arial">
-							<span style="font-size: 11pt"><input type="text" name="c_email" id="c_email" required/></span></font>
+							<span style="font-size: 11pt"><input type="email" name="c_email" id="email" required/></span></font><span id="email"></span><br/>
                             </td>
 						</tr>
 						<tr>
@@ -256,8 +278,7 @@ include("includes/db.php");
 	
 	
 	</form>
-	
-					<p>&nbsp;</p>
+	<p>&nbsp;</p>
 					<p>&nbsp;</div>
 			
 				<div id="products_box">
@@ -279,14 +300,9 @@ include("includes/db.php");
 	<?php 
 	if(isset($_POST['submit'])){
 
-			$c_name=$_POST['c_name'];
-			$c_email=$_POST['c_email'];
-				$sql = "SELECT email FROM customers WHERE c_email = $c_email";
-				$select = mysqli_query($con, $sql);
-				$row = mysqli_fetch_assoc($select);
-var_dump($row);
-
-			$c_check=$_POST['c_check'];
+			    $c_name=$_POST['c_name'];
+				$c_email=$_POST['c_email'];
+				$c_check=$_POST['c_check'];
   
 $ip = getIp();
   
@@ -303,33 +319,17 @@ $ip = getIp();
  $c_contactC1=$_POST['c_contactC1'];
  $c_contactC2=$_POST['c_contactC2'];
  $Cus_address=$_POST['Cus_address'];
-		
-		
-		
-		
-	
-		  move_uploaded_file($_FILES['c_image']['tmp_name'],"customer/customer_images/".$c_image);	
-		
-		
-		 $insert_c = "INSERT INTO  `customers` (customer_ip,`customer_name` ,  `Ind_OR_Company` ,  `customer_email` ,  `customer_pass` ,  `company_name` ,  `registration_number` ,  `address1` ,  `address2` ,  `customer_country` ,  `customer_city` ,  `State` ,  `contact_person` ,  `customer_contact1` , `customer_contact2` ,  `customer_address` ,  `customer_image`,`status` ) 
-VALUES (
-'$ip',  '$c_name',  '$c_check',  '$c_email',  '$c_pass',  '$comp_name',  '$c_RN',  '$c_address1',  '$c_address2',  '$c_country',  '$c_city',  '$c_state',  '$c_contactP',  
-'$c_contactC1',  '$c_contactC2',  '$Cus_address',  '$c_image','0')";
-
+		$c_image_tmp = $_FILES['c_image']['tmp_name'];
+		move_uploaded_file($c_image_tmp,"customer/customer_images/$c_image");
+	 $insert_c = "INSERT INTO  `customers` (customer_ip,`customer_name`,`Ind_OR_Company`,`customer_email`,`customer_pass`,`company_name`,`registration_number`,`address1`,`address2`,`customer_country`,`customer_city`,`State`,`contact_person`,`customer_contact1`,`customer_contact2`,`customer_address`,`customer_image`,status) 
+VALUES ('$ip','$c_name','$c_check','$c_email','$c_pass','$comp_name','$c_RN','$c_address1','$c_address2','$c_country','$c_city','$c_state','$c_contactP','$c_contactC1','$c_contactC2','$Cus_address','$c_image','0')";
 	
 		$run_c = mysqli_query($con, $insert_c); 
-		
 		//var_dump($run_c);
-		
 		$sel_cart = "select * from cart where ip_add='$ip'";
-	
 		$run_cart = mysqli_query($con, $sel_cart); 
-		
 	   $check_cart = mysqli_num_rows($run_cart); 
-		
-		
-		
-		
+
 		if($check_cart==0){
 		
 		$_SESSION['customer_email']=$c_email; 

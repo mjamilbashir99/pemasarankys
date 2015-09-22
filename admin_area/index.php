@@ -29,16 +29,16 @@ else {
 		<div id="right">
 		<h2 style="text-align:center;">Manage Content</h2>
 			
-			<a href="index.php?rfq">View RFQ</a>
-           
+		
+            <a href="index.php?insert_cat">Insert New Category</a>
+			<a href="index.php?view_cats">View All Categories</a>
             <a href="index.php?insert_product">Insert New Product</a>
             <a href="index.php?view_products">View All Products</a>
-			<a href="index.php?insert_cat">Insert New Category</a>
-			<a href="index.php?view_cats">View All Categories</a>
-			<a href="index.php?view_customers">View Customers</a>
-            			<a href="index.php?delete_customer">Delete Customers </a>
             <a href="index.php?create_customers">Create Customers</a>
-			<a href="index.php?view_orders">View Orders</a>
+			<a href="index.php?view_customers">View Customers</a>
+            <a href="index.php?delete_customer">Delete Customers </a>
+            <a href="index.php?rfq">View RFQ</a>
+			<!--<a href="index.php?view_orders">View Orders</a>-->
             <a href="index.php?view_po">View PO</a>
 			<a href="index.php?view_payments">View Payments</a>
 			<a href="logout.php">Admin Logout</a>
@@ -58,7 +58,23 @@ else {
 		
 		}
 		
+			if(isset($_GET['insert_cat'])){
 		
+		include("insert_cat.php"); 
+		
+		}
+		
+		if(isset($_GET['view_cats'])){
+		
+		include("view_cats.php"); 
+		
+		}
+		
+		if(isset($_GET['edit_cat'])){
+		
+		include("edit_cat.php"); 
+		
+		}
 		
 		if(isset($_GET['insert_product'])){
 		
@@ -83,23 +99,7 @@ else {
 		include("edit_pro.php"); 
 		
 		}
-		if(isset($_GET['insert_cat'])){
-		
-		include("insert_cat.php"); 
-		
-		}
-		
-		if(isset($_GET['view_cats'])){
-		
-		include("view_cats.php"); 
-		
-		}
-		
-		if(isset($_GET['edit_cat'])){
-		
-		include("edit_cat.php"); 
-		
-		}
+	
 		
 		if(isset($_GET['insert_brand'])){
 		

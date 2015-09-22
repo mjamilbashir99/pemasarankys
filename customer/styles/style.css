@@ -138,7 +138,7 @@ margin-bottom:10px;
 
 #products_box {
     font-family: arial;
-    font-size: 11px;
+    font-size:15px;
     margin-bottom: 10px;
     margin-left: 10px;
     text-align: left;
@@ -174,4 +174,25 @@ clear:both;
 .order_table td {
 	padding: 10px;
 	text-align:center;
+}
+ul.pagination {
+    text-align:center;
+    color:#FFA500;
+	width:660px;
+}
+ul.pagination li {
+    display:inline;
+    padding:0 3px;
+}
+ul.pagination a {
+    color:#FFA500;
+    display:inline-block;
+    padding:5px 10px;
+    border:1px solid #cde0dc;
+    text-decoration:none;
+}
+ul.pagination a:hover, 
+ul.pagination a.current {
+    background:#FFA500;
+    color:#fff; 
 }

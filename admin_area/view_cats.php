@@ -5,7 +5,10 @@
 	<tr align="center">
 		<td colspan="6"><h2>View All Categories Here</h2></td>
 	</tr>
-	
+	 <form method="post" enctype="multipart/form-data">
+<input  name="search" type="text" placeholder="search by Category name"/>
+<input name="btn" type="submit" value="Search" />
+	</form> 
 	<tr align="center" bgcolor="skyblue">
 		<th>Category ID</th>
 		<th>Category Title</th>
@@ -14,9 +17,15 @@
 	</tr>
 	<?php 
 	include("includes/db.php");
-	
-	$get_cat = "select * from categories";
-	
+	if(isset($_POST['btn'])){
+		
+		$search=$_POST['search'];
+	$get_cat = "select * from categories where cat_title = '$search'";
+	}else{
+		
+			$get_cat = "select * from categories";
+
+		}
 	$run_cat = mysqli_query($con, $get_cat); 
 	
 	$i = 0;
