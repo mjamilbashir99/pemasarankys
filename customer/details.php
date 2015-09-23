@@ -122,11 +122,11 @@ if($_SESSION['customer_email']  == ""){
 		$pro_title = $row_pro['product_title'];
 		$pro_image = $row_pro['product_image'];
 		$pro_desc = $row_pro['product_desc'];
-		$gallery1 =$row_pro['gallery_image1'];
-		$gallery2 =$row_pro['gallery_image2'];
-		$gallery3 =$row_pro['gallery_image3'];
-		$gallery4 =$row_pro['gallery_image4'];
-		$gallery5 =$row_pro['gallery_image5'];
+		$gallery_image1 =$row_pro['gallery_image1'];
+		$gallery_image2 =$row_pro['gallery_image2'];
+		$gallery_image3 =$row_pro['gallery_image3'];
+		$gallery_image4 =$row_pro['gallery_image4'];
+		$gallery_image5 =$row_pro['gallery_image5'];
 		
 		
 		
