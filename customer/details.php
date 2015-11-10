@@ -155,23 +155,14 @@ if($_SESSION['customer_email']  == ""){
             	<?php if($gallery_image5!=''){?>			
 				<img src='../admin_area/product_images/<?php echo $gallery_image5?>' width='80' height='100' class='small_images'/>&nbsp;
             	<?php }?>
-           
-
-		    <p><?php $pro_desc ?></p>
-					
-					
+		    	<p><?php echo $pro_desc ?></p>
 					<a href='index.php' style='float:left;'>Go Back</a>
-					
 					<a href='login.php'><button style='float:right'>Login</button></a>
-				
 				</div>
-
 				<?php	}
 							}
 								?>
-				
 				</div>
-			
 			</div>
 		</div>
 		<!--Content wrapper ends-->
