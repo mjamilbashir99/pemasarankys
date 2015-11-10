@@ -132,7 +132,7 @@ include("functions/functions.php");
            
 				
 			
-		<p><?php echo $pro_desc ?></p>
+		<p><?php $pro_desc ?></p>
 					
 					
 					<a href='index.php' style='float:left;'>Go Back</a>
